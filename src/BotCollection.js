@@ -17,13 +17,13 @@ const BotCollection = ({ collection }) => {
   };
 
   const deleteBot = (botId) => {
-    // Call the backend API to delete the bot by its ID
+    
     fetch(`http://localhost:8001/bots/${botId}`, {
       method: "DELETE",
     })
       .then((res) => {
         if (res.ok) {
-          // If the deletion is successful, update the frontend state
+          
           setBotArray((prevCollection) => prevCollection.filter((bot) => bot.id !== botId));
         } else {
           alert("Failed to delete the bot.");
