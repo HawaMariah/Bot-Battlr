@@ -16,6 +16,23 @@ const BotCollection = ({ collection }) => {
     setBotArray(BotArray.filter((bot) => bot.id !== botId));
   };
 
+  const deleteBot = (botId) => {
+    // Call the backend API to delete the bot by its ID
+    fetch(`http://localhost:8001/bots/${botId}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (res.ok) {
+          // If the deletion is successful, update the frontend state
+          setBotArray((prevCollection) => prevCollection.filter((bot) => bot.id !== botId));
+        } else {
+          alert("Failed to delete the bot.");
+        }
+      })
+      .catch((error) => alert("Error deleting the bot."));
+  };
+
+
   return (
     <>
       <YourBotArmy botarray={BotArray} removeBot={removeBot} />
@@ -40,7 +57,7 @@ const BotCollection = ({ collection }) => {
             <div>Catchphrase : {bot.catchphrase}</div>
             <div>Created at :{bot.created_at}</div>
             <div>Updated at : {bot.updated_at}</div>
-            
+            <button onClick={() => deleteBot(bot.id)}>x</button>
           </div>
         ))}
       </div>
@@ -49,4 +66,6 @@ const BotCollection = ({ collection }) => {
 };
 
 export default BotCollection;
+
+
 
