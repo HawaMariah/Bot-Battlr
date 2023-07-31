@@ -7,7 +7,7 @@ background-color: black;
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
     grid-gap: 30px; 
-    
+    padding: 10px;
   }
   .your-bot-army{
     display: grid;
@@ -15,4 +15,8 @@ background-color: black;
     grid-gap: 10px;
     background-color: rgb(68, 63, 63); 
    
+  }
+  .bot-details{
+   background-color: rgb(61, 65, 63);
+   border-radius: 20px;
   }
